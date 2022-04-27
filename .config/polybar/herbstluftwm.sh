@@ -3,27 +3,22 @@
 hash herbstclient xrandr
 
 print_tags() {
-	for tag in $(herbstclient tag_status "$1"); do
+	for tag in $(herbstclient tag_status); do
 		name=${tag#?}
 		state=${tag%$name}
 		case "$state" in
 		'#')
-			printf '%%{R} %s %%{R}' "   $name   "
+			printf '%%{F#1c1c1c} %s ' "   $name   "
 			;;
-		'+')
-			printf '%%{F#cccccc}%%{R} %s %%{R}%%{F-}' "$name"
-			;;
-		'!')
-			printf '%%{R} %s! %%{R}' "   $name   "
+		':')
+		    printf '%%{F} %s ' "   $name   "
 			;;
 		'.')
-			printf '%%{F#cccccc} %s %%{F-}' "   $name   "
+		    printf '%%{F} %s ' "   $name   "
 			;;
-		*)
-			printf ' %s ' "   $name   "
 		esac
 	done
-	printf '\n'
+    printf "\n"
 }
 
 geom_regex='[[:digit:]]\+x[[:digit:]]\++[[:digit:]]\++[[:digit:]]\+'

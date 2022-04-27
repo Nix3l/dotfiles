@@ -5,13 +5,14 @@ Plug 'sainnhe/everforest'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+Plug 'morhetz/gruvbox', {'as': 'gruvbox'}
 
 call plug#end()
 
 " use the coc config
 source $HOME/.config/nvim/plug-config/coc.vim
 
-colorscheme catppuccin
+colorscheme gruvbox
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
@@ -30,7 +31,6 @@ set fileencoding=utf-8                  " The encoding written to file
 set ruler              			            " Show the cursor position all the time
 set cmdheight=2                         " More space for displaying messages
 set iskeyword+=-                      	" treat dash separated words as a word text object"
-" set mouse=a
 set splitbelow                          " Horizontal splits will automatically be below
 set splitright                          " Vertical splits will automatically be to the right
 set t_Co=256                            " Support 256 colors
@@ -49,15 +49,14 @@ set clipboard=unnamedplus               " Copy paste between vim and everything 
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "all",
   highlight = {
     enable = true, -- false will disable the whole extension
   },
 }
 
+-- catppuccin things
 require("catppuccin").setup ({
-    transparent_background = false,
-    term_colors = false,
     styles = {
     	comments = "italic",
     	functions = "italic",
@@ -85,8 +84,6 @@ require("catppuccin").setup ({
 	lsp_trouble = false,
 	cmp = true,
 	lsp_saga = false,
-	gitgutter = false,
-	gitsigns = true,
 	telescope = true,
 	nvimtree = {
 		enabled = true,

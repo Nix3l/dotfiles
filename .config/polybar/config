@@ -9,59 +9,97 @@
 # POLYBAR CONFIG #
 # -------------- #
 
+# VALUES #
+
 [colors]
-bar-bg = #00161320
-mod-bg = #1E1E2E
-mod-time-bg = #F5C2E7
-mod-time-fg = #302D41
-mod-battery-bg = #B5E8E0
-mod-battery-fg = #302D41
-mod-wm-bg = #F2CDCD
-mod-wm-fg = #1E1E2E
-mod-border = #C9CBFF
-mod-border-size = 4
-fg = #D9E0EE
+bar-bg = #282828
+fg = #fbf1c7
+
+mod-time-bg = #076678
+mod-time-fg = #fbf1c7
+
+mod-battery-bg = #458588
+mod-battery-fg = #fbf1c7
+
+mod-wm-bg = #076678
+mod-wm-fg = #282828
+
+mod-music-bg = #427b58
+mod-music-fg = #fbf1c7
+
+mod-pulse-bg = #458588
+mod-pulse-fg = #fbf1c7
 
 [spacing]
 mod-margin-vertical   = 0
-mod-margin-horizontal = 2
-mod-border-radius = 0
+mod-margin-horizontal = 0
 mod-padding = 0
 wm-margin = 3
 padding = 0
 
-[bar/main]
-dpi = 102
+# BARS #
 
-height = 38
-width = 98%
-offset-y = 10
-offset-x = 1%
+[bar/gruvbox]
+
+height = 30
+width = 100%
+offset-y = 0
+offset-x = 0
 radius = 0.0
 fixed-center = false 
 bottom = false
 
-border-size = 0
+border-color      = ${colors.bar-bg}
+border-size       = 10
+border-left-size  = 0
+border-right-size = 0
 
-padding-left  = ${spacing.padding}
-padding-right = ${spacing.padding}
-
-module-margin-left   = ${spacing.mod-margin-horizontal}
-module-margin-right  = ${spacing.mod-margin-horizontal}
-module-margin-top    = ${spacing.mod-margin-vertical}
-module-margin-bottom = ${spacing.mod-margin-vertical}
+padding       = 3
+padding-left  = 3
+module-margin = 2
 
 font-0 = FontAwesome:fontformat=truetype:size=12;1
-font-1 = UbuntuMono:size=10.5;1
+font-1 = JetBrains Mono:size=9;1
 
-modules-right = herbstluftwm 
-modules-left  = date battery
+modules-right  = pulse herbstluftwm powermenu
+modules-center = spotify
+modules-left   = date battery
 
-tray-position = left
-tray-background = ${colors.mod-bg}
+tray-position   = left
+tray-background = ${colors.bar-bg}
+tray-padding    = 10
+
+line-size = 0
 
 background = ${colors.bar-bg}
 foreground = ${colors.fg}
+
+# MODULES #
+
+# ------------------ #
+
+[module/spotify]
+type = custom/script
+interval = 1
+
+format-prefix = "♪"
+format-prefix-padding = 4
+
+label-padding = 4
+label-padding-left = 0
+
+format-background = ${colors.mod-music-bg}
+format-foreground = ${colors.mod-music-fg}
+
+format = <label>
+
+exec = python $HOME/.config/polybar/spotify.py -f "{song} by {artist} on {album}" -t 70
+
+click-left   = playerctl --player=spotify play-pause # ]
+click-right  = playerctl --player=spotify next       # ] <= CONTROLS
+click-middle = playerctl --player=spotify previous   # ]
+
+# ------------------ #
 
 [module/herbstluftwm]
 type = custom/script
@@ -74,42 +112,33 @@ label-padding-left   = 0
 label-padding-top    = 0
 label-padding-bottom = 0
 
-#format-prefix = ""
-#format-prefix-background = ${colors.mod-wm-bg}
-#format-prefix-foreground = ${colors.mod-wm-fg}
-#format-prefix-padding = 4
-#format-prefix-margin = 0
+#format-suffix = ""
+#format-suffix-background = ${colors.mod-wm-bg}
+#format-suffix-foreground = ${colors.mod-wm-fg}
+#format-suffix-padding = 2
 
-format-background = ${colors.mod-bg}
-format-foreground = ${colors.fg}
 format-padding = ${spacing.mod-padding}
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-format-padding = ${spacing.mod-padding}
-format-background = ${colors.mod-bg}
-border-color = ${colors.mod-border}
-border-size = ${colors.mod-border-size}
+format-background = ${colors.mod-wm-bg}
+format-foreground = ${colors.mod-wm-fg}
+label-background  = ${colors.mod-wm-bg}
+label-foreground  = ${colors.mod-wm-fg}
 
-[module/cpu]
-type = internal/cpu
-interval = 2
-label = %percentage:2%%
-label-padding = 4
-format-prefix = " "
-format-background = ${colors.mod-bg}
-format-foreground = ${colors.fg}
-format-padding = ${spacing.mod-padding}
+# ------------------ #
 
-[module/memory]
-type = internal/memory
-interval = 2
-label = %percentage_used%%
-format-prefix = " "
-format-background = ${colors.mod-bg}
-format-foreground = ${colors.fg}
-format-padding = ${spacing.mod-padding}
+[module/powermenu]
+type = custom/script
+
+exec = "echo \n"
+click-left = rofi -show power-menu -modi power-menu:~/.config/polybar/powermenu
+
+label = ""
+label-padding = 2
+
+format-background = ${colors.mod-power-bg}
+format-foreground = ${colors.mod-power-fg}
+
+# ------------------ #
 
 [module/date]
 type = internal/date
@@ -124,25 +153,33 @@ format-prefix = " "
 
 format-background = ${colors.mod-time-bg}
 format-foreground = ${colors.mod-time-fg}
-label-background  = ${colors.mod-bg}
-label-foreground  = ${colors.fg}
+label-background  = ${colors.mod-time-bg}
+label-foreground  = ${colors.mod-time-fg}
 
 format-padding = ${spacing.mod-padding}
 label-padding = 2
-format-prefix-padding = 3
-format-prefix-padding-left = 4
+format-prefix-padding = 0
+format-prefix-padding-left = 2
 
-[module/audio]
+# ------------------ #
+
+[module/pulse]
 type = internal/pulseaudio
 
 format-volume = <label-volume>
-label-volume = " %percentage%%"
+format-prefix = " "
 
-label-muted = "muted"
+label-volume = "%percentage%%"
+label-muted  = "M"
 
-format-background = ${colors.mod-bg}
-format-foreground = ${colors.fg}
-format-padding = ${spacing.mod-padding}
+format-prefix-padding = 4
+label-padding = 4
+label-padding-left = 2
+
+format-background = ${colors.mod-pulse-bg}
+format-foreground = ${colors.mod-pulse-fg}
+
+# ------------------ #
 
 [module/battery]
 type = internal/battery
@@ -151,45 +188,46 @@ adapter = AC
 full-at = 98
 interval = 2
 
-format-background = ${colors.mod-bg}
-format-foreground = ${colors.fg}
+format-background = ${colors.mod-battery-bg}
+format-foreground = ${colors.mod-battery-fg}
 format-prefix-background = ${colors.mod-battery-bg}
 format-prefix-foreground = ${colors.mod-battery-fg}
-format-prefix-padding = 4
+format-prefix-padding = 2
 format-prefix = ""
 label-padding = 2
-label-padding-left = 4
+label-padding-left = 0
 
 format-charging = " <animation-charging> <label-charging>"
 format-charging-prefix = ""
-format-charging-background = ${colors.mod-bg}
-format-charging-foreground = ${colors.fg}
+format-charging-background = ${colors.mod-battery-bg}
+format-charging-foreground = ${colors.mod-battery-fg}
 format-charging-padding = ${spacing.mod-padding}
 format-charging-prefix-background = ${colors.mod-battery-bg}
 format-charging-prefix-foreground = ${colors.mod-battery-fg}
-format-charging-prefix-padding = 4
+format-charging-prefix-padding = 2
 label-charging-padding = 2
+label-charging-padding-left = 0
 
 format-discharging = " <animation-discharging><label-discharging>"
 format-discharging-prefix = ""
-format-discharging-background = ${colors.mod-bg}
-format-discharging-foreground = ${colors.fg}
+format-discharging-background = ${colors.mod-battery-bg}
+format-discharging-foreground = ${colors.mod-battery-fg}
 format-discharging-padding = ${spacing.mod-padding}
 format-discharging-prefix-background = ${colors.mod-battery-bg}
 format-discharging-prefix-foreground = ${colors.mod-battery-fg}
-format-discharging-prefix-padding = 4
+format-discharging-prefix-padding = 2
 label-discharging-padding = 2
-label-discharging-padding-left = 4
+label-discharging-padding-left = 0
 
 format-full-prefix = ""
-format-full-background = ${colors.mod-bg}
-format-full-foreground = ${colors.fg}
+format-full-background = ${colors.mod-battery-bg}
+format-full-foreground = ${colors.mod-battery-fg}
 format-full-padding = ${spacing.mod-padding}
 format-full-prefix-background = ${colors.mod-battery-bg}
 format-full-prefix-foreground = ${colors.mod-battery-fg}
-format-full-prefix-padding = 4
+format-full-prefix-padding = 2
 label-full-padding = 2
-label-full-padding-left = 4
+label-full-padding-left = 0
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -205,6 +243,9 @@ animation-discharging-1 =
 animation-discharging-2 = 
 animation-discharging-framerate = 750
 
+# ------------------ #
+
+# OTHER #
 [settings]
 screenchange-reload = true
 transparency = false

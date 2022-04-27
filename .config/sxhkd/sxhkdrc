@@ -1,0 +1,38 @@
+#        _      _____ _
+#  _ __ (_)_  _|___ /| |
+# | '_ \| \ \/ / |_ \| |
+# | | | | |>  < ___) | |
+# |_| |_|_/_/\_\____/|_|
+#
+
+# SXHKD CONFIG #
+
+super + Return
+    alacritty
+
+super + r
+    rofi -show drun
+
+super + shift + q
+    herbstclient quit
+
+super + shift + r
+    herbstclient reload
+
+super + w
+    herbstclient close
+
+super + {Left, Right, Up, Down}
+    herbstclient focus {left, right, up, down}
+
+super + shift + {Left, Right, Up, Down}
+    herbstclient shift {left, right, up, down}
+
+super + {s, f, p}
+    herbstclient {floating, fullscreen, pseudotile} toggle
+
+super + shift + f
+    herbstclient set_attr clients.focus.floating toggle
+
+super + m
+    herbstclient jumpto last-minimized

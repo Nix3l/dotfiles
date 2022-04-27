@@ -13,11 +13,13 @@
 
 # START IMPORTANT PROCESSES #
 pkill polybar
-pulseaudio --start &
+pulseaudio --daemonize=true
+start-pulseaudio-x11
 nitrogen --restore &
 picom --experimental-backends &
-polybar main &
-xset r rate 200 40 &
+polybar gruvbox &
+dunst -config ~/.config/dunst/dunstrc &
+xset r rate 200 40
 xrandr --output eDP-1 --brightness 0.8
 # ------------------------- #
 
@@ -31,34 +33,20 @@ hc keyunbind --all
 
 Mod=Mod4
 
-# hc keybind $Mod-r spawn $HOME/.config/rofi/launchers/colorful/launcher.sh
-hc keybind $Mod-r spawn rofi -show drun
-hc keybind $Mod-Tab spawn rofi -show window
-
 hc keybind $Mod-Shift-q quit
-hc keybind $Mod-Shift-r reload
-hc keybind $Mod-w close
-hc keybind $Mod-Return spawn "${TERMINAL:-alacritty}"
+hc keybind $Mod-space                                                           \
+            or , and . compare tags.focus.curframe_wcount = 2                   \
+                     . cycle_layout +1 vertical horizontal max vertical grid    \
+               , cycle_layout +1
 
-hc keybind $Mod-Left  focus left
-hc keybind $Mod-Down  focus down
-hc keybind $Mod-Up    focus up
-hc keybind $Mod-Right focus right
+hc mouseunbind --all
+hc mousebind $Mod-Button1 move
+hc mousebind $Mod-Button2 zoom
+hc mousebind $Mod-Button3 resize
 
-hc keybind $Mod-Shift-Left  shift left
-hc keybind $Mod-Shift-Down  shift down
-hc keybind $Mod-Shift-Up    shift up
-hc keybind $Mod-Shift-Right shift right
+sxhkd & # hotkey daemon
 
-hc keybind $Mod-u       split   bottom  0.5
-hc keybind $Mod-o       split   right   0.5
-hc keybind $Mod-Control-space split explode
-
-resizestep=0.02
-hc keybind $Mod-Control-Left    resize left +$resizestep
-hc keybind $Mod-Control-Down    resize down +$resizestep
-hc keybind $Mod-Control-Up      resize up +$resizestep
-hc keybind $Mod-Control-Right   resize right +$resizestep
+# TAGS #
 
 tag_names=( {1..4} )
 tag_keys=( {1..4} 0 )
@@ -73,38 +61,14 @@ for i in "${!tag_names[@]}" ; do
     fi
 done
 
-hc keybind $Mod-e remove
-hc keybind $Mod-s floating toggle
-hc keybind $Mod-f fullscreen toggle
-hc keybind $Mod-Shift-f set_attr clients.focus.floating toggle
-hc keybind $Mod-Shift-m set_attr clients.focus.minimized true
-hc keybind $Mod-Control-m jumpto last-minimized
-hc keybind $Mod-p pseudotile toggle
-hc keybind $Mod-space                                                           \
-            or , and . compare tags.focus.curframe_wcount = 2                   \
-                     . cycle_layout +1 vertical horizontal max vertical grid    \
-               , cycle_layout +1
+# THEME #
 
-hc mouseunbind --all
-hc mousebind $Mod-Button1 move
-hc mousebind $Mod-Button2 zoom
-hc mousebind $Mod-Button3 resize
-
-# focus #
-hc keybind $Mod-BackSpace   cycle_monitor
-#hc keybind $Mod-Tab         cycle_all +1
-#hc keybind $Mod-Shift-Tab   cycle_all -1
-hc keybind $Mod-c cycle
-hc keybind $Mod-i jumpto urgent
-
-# theme #
-
-BLACK="#1A1826"
-GREEN="#ABE9B3"
-BLUE="#89DCEB" 
-CYAN="#B5E8E0" 
-WHITE="#D9E0EE"
-GRAY="#C3BAC6"
+BLACK="#282828"
+GREEN="#689d6a"
+BLUE="#458588" 
+CYAN="#83a598" 
+WHITE="#ebdbb2"
+GRAY="#928374"
 
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
@@ -119,10 +83,10 @@ hc set frame_transparent_width 0
 hc set frame_gap 0
 
 hc attr theme.title_height 0
-hc attr theme.title_font 'Ubuntu Mono:pixelsize=12:antialias=true:autohint=true'
+hc attr theme.title_font 'JetBrains Mono:pixelsize=12:antialias=true:autohint=true'
 hc attr theme.padding_top 0 
 hc attr theme.active.color $BLACK
-hc attr theme.title_color $WHITE 
+hc attr theme.title_color $WHITE
 hc attr theme.normal.color $WHITE
 hc attr theme.urgent.color $BLACK
 hc attr theme.normal.title_color $WHITE
@@ -131,12 +95,8 @@ hc attr theme.floating.border_width 2
 hc attr theme.floating.outer_width 1
 hc attr theme.floating.outer_color black
 hc attr theme.active.inner_color $WHITE
-hc attr theme.urgent.inner_color $BLUE
-hc attr theme.normal.inner_color $GRAY
-for state in active urgent normal ; do
-    hc substitute C theme.${state}.inner_color \
-        attr theme.${state}.outer_color C
-done
+hc attr theme.urgent.inner_color $CYAN
+hc attr theme.normal.inner_color $GREEN
 hc attr theme.active.outer_width 2
 hc attr theme.background_color $BLACK
 
@@ -145,6 +105,11 @@ hc set frame_padding 4
 hc set smart_window_surroundings off 
 hc set smart_frame_surroundings on
 hc set mouse_recenter_gap 0
+
+for state in active urgent normal ; do
+    hc substitute C theme.${state}.inner_color \
+        attr theme.${state}.outer_color C
+done
 
 # rules
 hc unrule -F

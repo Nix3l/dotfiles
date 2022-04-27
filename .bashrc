@@ -12,6 +12,10 @@ alias rm='rm -r'
 alias gw='./gradlew'
 alias vim='nvim'
 alias xsrc='./xbps-src'
+alias aurinstall='yay -Sy'
+alias fetch='$HOME/Bunnyfetch/bunnyfetch'
+
+$HOME/Bunnyfetch/bunnyfetch
 
 # prompt
 eval "$(starship init bash)"
