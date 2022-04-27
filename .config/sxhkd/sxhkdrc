@@ -7,11 +7,28 @@
 
 # SXHKD CONFIG #
 
+XF86Audio{Prev, Next}
+    playerctl --player=spotify {previous, next}
+
+XF86AudioPlay
+    playerctl --player=spotify play-pause
+
+XF86Audio{RaiseVolume, LowerVolume}
+    pactl set-sink-volume @DEFAULT_SINK@ {-,+}1000
+
+super + b
+    /bin/librewolf
+
+super + e
+    alacritty -e "cd ~/projects/eon"
+
 super + Return
     alacritty
 
 super + r
     rofi -show drun
+
+# HERBSTLUFTWM BINDINGS #
 
 super + shift + q
     herbstclient quit
