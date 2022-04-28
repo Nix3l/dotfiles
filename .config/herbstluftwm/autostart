@@ -13,14 +13,15 @@
 
 # START IMPORTANT PROCESSES #
 pkill polybar
-pulseaudio --daemonize=true
-start-pulseaudio-x11
+pkill sxhkd
 nitrogen --restore &
 picom --experimental-backends &
 polybar gruvbox &
 dunst -config ~/.config/dunst/dunstrc &
 xset r rate 200 40
+xset s 0 -dpms # screensaver off
 xrandr --output eDP-1 --brightness 0.8
+pulseaudio --daemonize=true
 # ------------------------- #
 
 hc() {

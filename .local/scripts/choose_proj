@@ -1,0 +1,4 @@
+#!/bin/bash
+
+chosen=${ls ~/projects | rofi -dmenu}
+alacritty -e $chosen
