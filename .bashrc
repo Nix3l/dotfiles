@@ -13,10 +13,15 @@ alias gw='./gradlew'
 alias vim='nvim'
 alias xsrc='./xbps-src'
 alias aurinstall='yay -Sy'
-alias fetch='$HOME/Bunnyfetch/bunnyfetch'
+alias bfetch='$HOME/Bunnyfetch/bunnyfetch'
 
 $HOME/Bunnyfetch/bunnyfetch
+# $HOME/.local/scripts/termcolor/colorscript.sh -r
 
 # prompt
 eval "$(starship init bash)"
 # PS1='\w \$ '
+
+if [[ "$(tty)" = "/dev/tty1" ]]; then
+    killall sxhkd
+fi
