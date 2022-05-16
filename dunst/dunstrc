@@ -1,0 +1,53 @@
+[colors]
+foreground = "#eceff4"
+background = "#1c2027"
+
+[urgency_low]
+foreground = "#eceff4"
+background = "#1c2027"
+
+[urgency_normal]
+foreground = "#eceff4"
+background = "#1c2027"
+
+[urgency_critical]
+foreground = "#bf616a"
+background = "#1c2027"
+
+[global]
+font = JetBrains Mono 11
+geometry = 800x4-150+4
+padding = 8
+horizontal_padding = 8
+separator_color = "#2e3440"
+separator_height = 2
+markup = full
+shrink = true
+ignore_newline = true
+; word_wrap = true
+
+; Icons
+icon_position = left
+max_icon_size = 50
+
+; Actions
+show_indicators = false
+mouse_left_click = do_action
+mouse_right_click = close_all
+dmenu = rofi -dmenu -i -p Notification
+browser = x-www-browser
+
+format = "<i>%a </i>\n<b>%s </b>\n%b"
+
+[shortcuts]
+history = "shift+mod1+Delete"
+close_all = "mod1+Delete"
+
+; Don't show the separator between the summary and body if there is no body
+[bruno_format_bodyless]
+body = ""
+format = "%s"
+
+; Delay notifications when in fullscreen to show when coming out of fullscreen
+[bruno_delay_fullscreen]
+fullscreen = pushback
