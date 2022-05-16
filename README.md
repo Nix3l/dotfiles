@@ -18,3 +18,4 @@ Backgrounds in my backgrounds repo.
     - Application Launcher: Rofi
     - PDF/ePUB Reader: Zathura
     - File Manager: Thunar
+    - Screenshot Utiliy: Flameshot
