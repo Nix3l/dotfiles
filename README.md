@@ -6,7 +6,6 @@ Made for simplicity and eyecandy.
 Backgrounds in my backgrounds repo.
 
 ![Screenshot 1](shot1.png)
-![Screenshot 2](shot2.png)
 
 ## Applications
     - Window Manager: BSPWM
