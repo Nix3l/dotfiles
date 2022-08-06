@@ -1,0 +1,4 @@
+format = "$directory[▶](bold green) "
+
+[directory]
+style = "bold cyan"
