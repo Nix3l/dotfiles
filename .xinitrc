@@ -25,6 +25,8 @@ xset s 0 -dpms # screensaver off
 xrandr --output eDP1 --brightness 0.8
 xrandr -s 1280x720
 
+xsetroot -cursor_name left_ptr # why must you do this to me bspwm
+
 # ------------------------- #
 
 exec bspwm -c ~/.config/bspwm/bspwmrc
