@@ -10,3 +10,4 @@ if [[ "$(tty)" = "/dev/tty1" ]]; then
     sleep 2
     startx
 fi
+export PATH=$PATH:/home/nix3l/.spicetify

@@ -1,14 +1,13 @@
 {
     "general": {
         "emotes": true,
-        "publicServers": true,
-        "voiceDisconnect": false,
+        "publicServers": false,
+        "voiceDisconnect": true,
         "showToasts": true,
         "mediaKeys": false
     },
     "addons": {
         "addonErrors": true,
-        "autoReload": true,
         "editAction": "detached"
     },
     "customcss": {

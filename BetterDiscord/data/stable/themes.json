@@ -1,3 +1,6 @@
 {
-    "       Nordic": true
+    "       Nordic": true,
+    "Nordic": false,
+    "Gruvbox Hard Dark": false,
+    "Gruvbox": true
 }

@@ -1,18 +1,14 @@
-[colors]
-foreground = "#eceff4"
-background = "#1c2027"
-
 [urgency_low]
-foreground = "#eceff4"
-background = "#1c2027"
+    background = "#282828"
+    foreground = "#ebdbb2"
 
 [urgency_normal]
-foreground = "#eceff4"
-background = "#1c2027"
+    background = "#282828"
+    foreground = "#ebdbb2"
 
 [urgency_critical]
-foreground = "#bf616a"
-background = "#1c2027"
+    background = "#282828"
+    foreground = "#ebdbb2"
 
 [global]
 font = JetBrains Mono 11
