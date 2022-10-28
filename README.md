@@ -1,9 +1,9 @@
 ### Nix3l's .dotfiles
 
-My dotfiles for my (currently) arch setup.
-Made using the Nord color palette.
-Made for simplicity and eyecandy.
-Backgrounds in my backgrounds repo.
+my dotfiles for my (currently) arch setup.
+made using the gruvbox color palette.
+made for simplicity and eyecandy.
+backgrounds in my backgrounds repo.
 
 ![Screenshot 1](shot1.png)
 
