@@ -15,8 +15,9 @@ alias gw='./gradlew'
 alias vim='nvim'
 alias xsrc='./xbps-src'
 alias aurinstall='yay -Sy'
-alias cat='bat'
+alias bcat='bat'
 alias cp='cp -r'
+alias hexdump='hexdump -C'
 
 # prompt
 eval "$(starship init bash)"

@@ -1,8 +1,24 @@
+#
+# application hotkeys
+#
+
+super + e
+    $FILE_EXPLORER
+
+super + b
+    $BROWSER
+
+super + shift + s
+    flameshot gui
+
 super + Return
-	alacritty
+    $TERMINAL
 
 super + r
-    rofi -show drun
+    $HOME/.config/rofi/scripts/launcher.sh
+
+super + shift + p
+    $HOME/.config/rofi/scripts/powermenu.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -25,8 +41,8 @@ super + m
 	bspc desktop -l next
 
 # swap the current node and the biggest window
-super + g
-	bspc node -s biggest.window
+# super + g
+#     bspc node -s biggest.window
 
 # set the window state
 super + {t,shift + t,s,f}

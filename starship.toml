@@ -1,4 +1,5 @@
-format = "$directory[▶](bold green) "
+# format = "$directory[▶](bold green) "
+format = "$directory[>>](bold green) "
 
 [directory]
 style = "bold cyan"

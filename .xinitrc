@@ -11,21 +11,48 @@
 # XINITRC #
 # ------- #
 
-# START IMPORTANT PROCESSES #
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+sysresources=/etc/X11/xinit/.Xresources
+sysmodmap=/etc/X11/xinit/.Xmodmap
 
-pulseaudio --start
-start-pulseaudio-x11
+# merge in defaults and keymaps
+
+if [ -f $sysresources ]; then
+    xrdb -merge $sysresources
+fi
+
+if [ -f $sysmodmap ]; then
+    xmodmap $sysmodmap
+fi
+
+if [ -f "$userresources" ]; then
+    xrdb -merge "$userresources"
+fi
+
+if [ -f "$usermodmap" ]; then
+    xmodmap "$usermodmap"
+fi
+
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+  [ -x "$f" ] && . "$f"
+ done
+ unset f
+fi
+
+# START IMPORTANT PROCESSES #
 
 pkill polybar picom
 
 nitrogen --restore &
-picom --experimental-backends --config ~/.config/picom.conf &
+picom --config ~/.config/picom.conf &
 dunst -config ~/.config/dunst/dunstrc &
 
 xset r rate 200 40
 xset s 0 -dpms # screensaver off
-xrandr --output eDP1 --brightness 0.8
-xrandr -s 1366x768
+xrandr --output DP-0 --mode 1920x1080 --rate 165
+xrandr --output DP-0 -s 1920x1080
 
 xsetroot -cursor_name left_ptr # why must you do this to me bspwm
 

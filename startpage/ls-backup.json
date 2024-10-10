@@ -1,0 +1,155 @@
+{
+  "yags-general": {
+    "img": "https://raw.githubusercontent.com/Costeer/Gruvbox-Material-startpage/master/src/img/banners/cbg-1.gif",
+    "title": "liftoff",
+    "displayImg": true,
+    "font": "Quicksand",
+    "enableFonts": true,
+    "fontSize": 1.2
+  },
+  "yags-search": {
+    "placeholder": "search the web",
+    "engine": "https://lite.duckduckgo.com/lite/?q={query}",
+    "forwardingLookup": {
+      "/": "/",
+      "reddit": "https://reddit.com/",
+      "maps": "https://maps.google.com/",
+      "desmos": "https://www.desmos.com/calculator",
+      "calculator": "https://www.desmos.com/scientific",
+      "email": "https://mail.google.com/mail/u/0/",
+      "prayer times": "https://timesprayer.com/en/prayer-times-in-amman.html",
+      "小説": "https://yonde.itazuraneko.org",
+      "manga": "https://mangareader.to",
+      "opengl wiki": "https://www.khronos.org/opengl/wiki/Main_Page"
+    }
+  },
+  "yags-theme": {
+    "inverted": false,
+    "color": {
+      "name": "custom",
+      "bg": {
+        "shade": "#282626",
+        "base": "#32302F",
+        "surface": "#3C3A38",
+        "highlight": "#464342"
+      },
+      "fg": {
+        "shade": "#C9A669",
+        "base": "#DDC7A1",
+        "surface": "#F1E8D9",
+        "highlight": "#FFFFFF"
+      },
+      "primary": {
+        "bg": "#40613A",
+        "base": "#89B482",
+        "fg": "#E4EEE3"
+      },
+      "secondary": {
+        "bg": "#395C54",
+        "base": "#7DAEA3",
+        "fg": "#D9E7E4"
+      },
+      "palette": {
+        "red": "#E06C75",
+        "green": "#98C379",
+        "yellow": "#E5C07B",
+        "blue": "#61AFEF",
+        "purple": "#C678DD",
+        "cyan": "#56B6C2",
+        "orange": "#FFBB7C"
+      }
+    },
+    "space": {
+      "smallest": "0.125rem",
+      "small": "0.5rem",
+      "medium": "1rem",
+      "large": "1.5rem",
+      "largest": "3rem"
+    }
+  },
+  "yags-surface": {
+    "shadow": {
+      "amount": 4,
+      "blur": 0,
+      "offset": 12,
+      "shadow": "12px 12px 0px rgb(64, 97, 58), 24px 24px 0px rgb(61.666666666666664, 95.33333333333333, 66.66666666666667), 36px 36px 0px rgb(59.333333333333336, 93.66666666666667, 75.33333333333333), 48px 48px 0px rgb(57, 92, 84)"
+    },
+    "borderRadius": 0,
+    "maxWidth": 1080
+  },
+  "yags-bookmarks": [
+    {
+      "id": "VYwfUNoEWhwyQV6h",
+      "label": "/media",
+      "bookmarks": [
+        {
+          "id": "H9tRtawVQ9KqhZk7",
+          "label": "anime",
+          "url": "https://www.nyaa.si"
+        },
+        {
+          "id": "boXbjVvt6iqjQ9av",
+          "label": "movies",
+          "url": "https://fmoviesz.to/"
+        },
+        {
+          "id": "b0OVvuBMzN1mhCo5",
+          "label": "books",
+          "url": "https://yonde.itazuraneko.org"
+        },
+        {
+          "id": "FJgYDLVlLLT23bCM",
+          "label": "drama",
+          "url": "https://drama-otaku.com/"
+        }
+      ]
+    },
+    {
+      "id": "uPGNResOrOIKXum3",
+      "label": "/personal",
+      "bookmarks": [
+        {
+          "id": "pdFAjPoRLXz4A2UZ",
+          "label": "youtube",
+          "url": "https://www.youtube.com"
+        },
+        {
+          "id": "2poKhn6L6Hs08nMS",
+          "label": "github",
+          "url": "https://www.github.com"
+        },
+        {
+          "id": "Zh4UCNm5y5HaLHZ1",
+          "label": "mal",
+          "url": "https://myanimelist.net/profile/Nix3l"
+        },
+        {
+          "id": "zyITQgind49kWIVI",
+          "label": "learn natively",
+          "url": "https://learnnatively.com/dashboard/"
+        }
+      ]
+    },
+    {
+      "id": "MslFTfo0tsI1hXit",
+      "label": "/hobbies",
+      "bookmarks": [
+        {
+          "id": "0hFkGYzso7Dd0501",
+          "label": "jisho",
+          "url": "https://www.jisho.org"
+        },
+        {
+          "id": "exBLCRMuFxIC7yVo",
+          "label": "weblio",
+          "url": "https://www.weblio.jp"
+        },
+        {
+          "id": "WpwOeCoWyzdY2WVr",
+          "label": "imabi",
+          "url": "https://imabi.org/table-of-contents-%e7%9b%ae%e6%ac%a1/"
+        }
+      ]
+    }
+  ]
+}

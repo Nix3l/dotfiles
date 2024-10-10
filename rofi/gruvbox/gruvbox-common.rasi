@@ -1,10 +1,7 @@
-/* ==========================================================================
-   File: gruvbox-common.rasi
-   Desc: Shared rules between all gruvbox themes
-   Author: bardisty <b@bah.im>
-   Source: https://github.com/bardisty/gruvbox-rofi
-   Modified: Mon Feb 12 2018 06:06:47 PST -0800
-   ========================================================================== */
+/* ====================================================
+   original at https://github.com/bardisty/gruvbox-rofi
+   quite modified
+   ==================================================== */
 
 window {
     background-color: @background;

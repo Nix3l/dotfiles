@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # start hotkey daemon
 pgrep -x sxhkd > /dev/null || sxhkd -c ~/.config/bspwm/sxhkdrc &
@@ -6,14 +6,27 @@ pgrep -x sxhkd > /dev/null || sxhkd -c ~/.config/bspwm/sxhkdrc &
 pkill polybar
 polybar main &
 
-bspc monitor -d "  " "  " "  " "  "
+bspc monitor -d "  " "  " "  " "  "
 
 bspc config border_width 2
 bspc config window_gap 12
 
-bspc config normal_border_color "#282828"
-bspc config focused_border_color "#7c6f64"
+bspc config normal_border_color  "#504945"
+bspc config focused_border_color "#89b482"
 
 bspc config split_ratio 0.55
+
+bspc config initial_polarity second_child
+
+bspc config single_monocle true
 bspc config borderless_monocle true
 bspc config gapless_monocle true
+
+bspc config top_monocle_padding    12
+bspc config bottom_monocle_padding 12
+bspc config right_monocle_padding  12
+bspc config left_monocle_padding   12
+
+nm-applet &
+fcitx5 &
+flameshot &

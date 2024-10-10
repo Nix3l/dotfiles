@@ -1,0 +1,198 @@
+configuration {
+    font: "Fira Code Nerd Font 10";
+    width: 30;
+    line-margin: 10;
+
+    display-ssh:    "";
+    display-run:    "";
+    display-drun:   "";
+    display-window: "";
+    display-combi:  "";
+    show-icons:     true;
+}
+
+* {
+    lines: 6;
+    columns: 2;
+
+    display-ssh:    "";
+    display-run:    "";
+    display-drun:   "";
+    display-window: "";
+    display-combi:  "";
+    show-icons:     true;
+    highlight: bold italic;
+    scrollbar: false;
+
+    /* dark colors */
+    everforest-dark-bg0-hard:     #272E33;
+    everforest-dark-bg0:          #272E33;
+    everforest-dark-bg2:          #374145;
+    everforest-dark-fg0:          #D3C6AA;
+    everforest-dark-fg1:          #D3C6AA;
+    everforest-dark-red-dark:     #4C3743;
+    everforest-dark-red-light:    #E67E80;
+    everforest-dark-yellow-dark:  #45443C;
+    everforest-dark-yellow-light: #DBBC7F;
+    everforest-dark-gray:         #859289;
+
+    /* Theme colors */
+    background:                  @everforest-dark-bg0-hard;
+    background-color:            @background;
+    foreground:                  @everforest-dark-fg1;
+    border-color:                @everforest-dark-gray;
+    separatorcolor:              @border-color;
+    scrollbar-handle:            @border-color;
+
+    normal-background:           @background;
+    normal-foreground:           @foreground;
+    alternate-normal-background: @everforest-dark-bg0;
+    alternate-normal-foreground: @foreground;
+    selected-normal-background:  @everforest-dark-bg2;
+    selected-normal-foreground:  @everforest-dark-fg0;
+
+    active-background:           @everforest-dark-yellow-dark;
+    active-foreground:           @background;
+    alternate-active-background: @active-background;
+    alternate-active-foreground: @active-foreground;
+    selected-active-background:  @everforest-dark-yellow-light;
+    selected-active-foreground:  @active-foreground;
+
+    urgent-background:           @everforest-dark-red-dark;
+    urgent-foreground:           @background;
+    alternate-urgent-background: @urgent-background;
+    alternate-urgent-foreground: @urgent-foreground;
+    selected-urgent-background:  @everforest-dark-red-light;
+    selected-urgent-foreground:  @urgent-foreground;
+}
+
+@import "everforest-common.rasi"
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    width:                       800px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    cursor:                      "default";
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     30px;
+    border:                      0px solid;
+    border-radius:               0px 0px 0px 0px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                     true;
+    padding:                     12px;
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "::";
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+entry {
+    enabled:                     true;
+    padding:                     12px;
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search...";
+    placeholder-color:           inherit;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+
+    lines: 8;
+    columns: 2;
+
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    background-color:            transparent;
+    cursor:                      "default";
+}
+scrollbar {
+    handle-width:                5px ;
+    border-radius:               0px;
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     5px;
+    border:                      0px solid;
+    border-radius:               0px;
+    cursor:                      pointer;
+}
+element selected.normal {
+    border:                      0px 0px 0px 4px;
+}
+element-icon {
+    padding:                     0px 0px 0px 10px;
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        32px;
+    cursor:                      inherit;
+}
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    highlight:                   inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+/*****----- Message -----*****/
+error-message {
+    padding:                     15px;
+    border:                      2px solid;
+    border-radius:               0px;
+}
+textbox {
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    highlight:                   none;
+}
