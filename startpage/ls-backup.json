@@ -88,11 +88,6 @@
           "url": "https://www.nyaa.si"
         },
         {
-          "id": "boXbjVvt6iqjQ9av",
-          "label": "movies",
-          "url": "https://fmoviesz.to/"
-        },
-        {
           "id": "b0OVvuBMzN1mhCo5",
           "label": "books",
           "url": "https://yonde.itazuraneko.org"
@@ -124,9 +119,9 @@
           "url": "https://myanimelist.net/profile/Nix3l"
         },
         {
-          "id": "zyITQgind49kWIVI",
-          "label": "learn natively",
-          "url": "https://learnnatively.com/dashboard/"
+          "id": "NqfuDLUSYDyWpQNO",
+          "label": "mdl",
+          "url": "https://mydramalist.com/profile/nix3l"
         }
       ]
     },
@@ -145,9 +140,9 @@
           "url": "https://www.weblio.jp"
         },
         {
-          "id": "WpwOeCoWyzdY2WVr",
-          "label": "imabi",
-          "url": "https://imabi.org/table-of-contents-%e7%9b%ae%e6%ac%a1/"
+          "id": "o8EBL12W0BbdzE90",
+          "label": "natively",
+          "url": "https://learnnatively.com/dashboard/"
         }
       ]
     }
